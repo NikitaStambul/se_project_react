@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Main.css";
 import WeatherCard from "components/WeatherCard/WeatherCard";
-import WeatherApi from "#/utils/weatherApi";
-import ItemCard from "../ItemCard/ItemCard";
+import ItemCard from "components/ItemCard/ItemCard";
+import WeatherApi from "utils/weatherApi";
 
 function Main({ weatherData }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +20,7 @@ function Main({ weatherData }) {
   }, []);
 
   return (
-    <main>
+    <main className="content">
       <WeatherCard />
       <section className="cards">
         <p className="cards__text">

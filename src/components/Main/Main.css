@@ -1,3 +1,7 @@
+.content {
+  min-height: calc(100vh - var(--height-header) - var(--height-footer));
+}
+
 .cards__list {
   list-style-type: none;
   margin: 0;

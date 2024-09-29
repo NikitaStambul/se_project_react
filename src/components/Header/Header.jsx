@@ -1,8 +1,8 @@
+import { useState } from "react";
 import "./Header.css";
 import logo from "assets/logo.svg";
 import avatar from "assets/avatar.svg";
-import { useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ModalWithForm from "components/ModalWithForm/ModalWithForm";
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +13,7 @@ function Header() {
   });
   const currentCity = "New York";
 
-  const handleOpenModal = () => {
+  const handleAddBtnClick = () => {
     setIsModalOpen(true);
   };
 
@@ -23,7 +23,7 @@ function Header() {
       <p className="header__date-and-location">
         {currentDate}, {currentCity}
       </p>
-      <button className="header__add-btn" onClick={handleOpenModal}>
+      <button className="header__add-btn" onClick={handleAddBtnClick}>
         + Add clothes
       </button>
       <div className="header__user">

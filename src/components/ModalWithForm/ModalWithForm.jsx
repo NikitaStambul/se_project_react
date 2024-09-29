@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 import "./ModalWithForm.css";
-import { useEffect, useState } from "react";
 
 function ModalWithForm({
   closeModal,
@@ -14,7 +14,16 @@ function ModalWithForm({
   useEffect(() => {
     setIsVisible(true);
 
+    const handleEscKey = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+
     return () => {
+      document.removeEventListener("keydown", handleEscKey);
       setIsVisible(false);
     };
   }, []);
@@ -24,8 +33,17 @@ function ModalWithForm({
     setTimeout(closeModal, 300);
   };
 
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("modal")) {
+      handleClose();
+    }
+  };
+
   return createPortal(
-    <div className={cn("modal", { modal__active: isVisible })}>
+    <div
+      className={cn("modal", { modal__active: isVisible })}
+      onClick={handleOverlayClick}
+    >
       <div className="modal__container">
         <h2 className="modal__title">{title}</h2>
         <button
