@@ -36,3 +36,34 @@ export const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
+
+export const coordinates = { lat: 34.182049, lon: -118.30748 };
+
+export const defaultWeatherData = {
+  type: "hot",
+  city: "Unknown",
+  temp: { F: 999, C: 999 },
+  isDay: true,
+  condition: "clear",
+};
+
+export const weatherCardsImages = {
+  day: {
+    clear: new URL("assets/weather/day/clear.svg", import.meta.url).href,
+    cloudy: new URL("assets/weather/day/cloudy.svg", import.meta.url).href,
+    fog: new URL("assets/weather/day/fog.svg", import.meta.url).href,
+    rain: new URL("assets/weather/day/rain.svg", import.meta.url).href,
+    snow: new URL("assets/weather/day/snow.svg", import.meta.url).href,
+    storm: new URL("assets/weather/day/storm.svg", import.meta.url).href,
+    default: new URL("assets/weather/day/default.svg", import.meta.url).href,
+  },
+  night: {
+    clear: new URL("assets/weather/night/clear.svg", import.meta.url).href,
+    cloudy: new URL("assets/weather/night/cloudy.svg", import.meta.url).href,
+    fog: new URL("assets/weather/night/fog.svg", import.meta.url).href,
+    rain: new URL("assets/weather/night/rain.svg", import.meta.url).href,
+    snow: new URL("assets/weather/night/snow.svg", import.meta.url).href,
+    storm: new URL("assets/weather/night/storm.svg", import.meta.url).href,
+    default: new URL("assets/weather/night/default.svg", import.meta.url).href,
+  },
+};

@@ -4,14 +4,13 @@ import logo from "assets/logo.svg";
 import avatar from "assets/avatar.svg";
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
 
-function Header() {
+function Header({ city }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const username = "Terrence Tegegne";
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  const currentCity = "New York";
 
   const handleAddBtnClick = () => {
     setIsModalOpen(true);
@@ -21,7 +20,7 @@ function Header() {
     <header className="header">
       <img className="haeder__logo" src={logo} alt="logo" />
       <p className="header__date-and-location">
-        {currentDate}, {currentCity}
+        {currentDate}, {city}
       </p>
       <button className="header__add-btn" onClick={handleAddBtnClick}>
         + Add clothes

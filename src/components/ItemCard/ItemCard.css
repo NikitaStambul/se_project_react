@@ -5,6 +5,8 @@
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #0000004d;
+  max-width: 350px;
+  aspect-ratio: 1;
 }
 
 .card__name {
@@ -21,4 +23,6 @@
 
 .card__image {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }

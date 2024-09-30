@@ -1,11 +1,22 @@
 import "./WeatherCard.css";
-import sunny from "assets/weather/sunny.svg";
+import { weatherCardsImages } from "#/utils/constants";
 
-function WeatherCard() {
+function WeatherCard({ weatherData }) {
+  const timeOfDay = weatherData.isDay ? "day" : "night";
+  const weatherImage =
+    weatherCardsImages[timeOfDay][weatherData.condition] ||
+    weatherCardsImages[timeOfDay].default;
+
+  console.log(weatherImage)
+
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">75&deg;F</p>
-      <img src={sunny} alt="weather" className="weather-card__image" />
+      <p className="weather-card__temp">{weatherData.temp.F}&deg;F</p>
+      <img
+        src={weatherImage}
+        alt={`${weatherData.condition} - ${timeOfDay}`}
+        className="weather-card__image"
+      />
     </section>
   );
 }

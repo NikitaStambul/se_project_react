@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import "./Main.css";
 import WeatherCard from "components/WeatherCard/WeatherCard";
 import ItemCard from "components/ItemCard/ItemCard";
-import WeatherApi from "utils/weatherApi";
+import Skeleton from "components/Skeleton/Skeleton";
+import weatherApi from "utils/weatherApi";
 
 function Main({ weatherData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [clothingItems, setClothingItems] = useState([]);
   useEffect(() => {
     setIsLoading(true);
-    const api = new WeatherApi();
-    api
-      .getDefaultClothing()
+
+    weatherApi
+      .getClothing()
       .then(setClothingItems)
       .catch(console.error)
       .finally(() => {
@@ -21,17 +22,25 @@ function Main({ weatherData }) {
 
   return (
     <main className="content">
-      <WeatherCard />
+      <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is 75&deg; F / You may want to wear:
+          Today is {weatherData.temp.F}&deg; F / You may want to wear:
         </p>
         {isLoading ? (
-          <p>Loading...</p>
+          <ul className="cards__list">
+            {Array(4)
+              .fill(0)
+              .map((_, index) => (
+                <li key={index}>
+                  <Skeleton />
+                </li>
+              ))}
+          </ul>
         ) : (
           <ul className="cards__list">
             {clothingItems
-              // .filter(({ weather }) => weather === weatherData.type)
+              .filter(({ weather }) => weather === weatherData.type)
               .map((item) => (
                 <ItemCard key={item._id} item={item} />
               ))}
