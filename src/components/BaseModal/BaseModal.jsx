@@ -19,7 +19,6 @@ function BaseModal({ closeModal, children, className }) {
 
     return () => {
       document.removeEventListener("keydown", handleEscKey);
-      setIsVisible(false);
     };
   }, []);
 

@@ -11,6 +11,7 @@ function Main({ weatherData }) {
   useEffect(() => {
     setIsLoading(true);
 
+    // mock api request instead taking clothing from constant directly
     weatherApi
       .getClothing()
       .then(setClothingItems)

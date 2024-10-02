@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import "./ModalWithForm.css";
 import BaseModal from "../BaseModal/BaseModal";
 
@@ -8,7 +7,7 @@ function ModalWithForm({
   title = "Form",
   submitBtnText = "Submit",
 }) {
-  return createPortal(
+  return (
     <BaseModal closeModal={closeModal} className="modal__container_padded">
       <h2 className="modal__title">{title}</h2>
       <form className="modal__form">
@@ -17,8 +16,7 @@ function ModalWithForm({
           {submitBtnText}
         </button>
       </form>
-    </BaseModal>,
-    document.getElementById("modal-root")
+    </BaseModal>
   );
 }
 

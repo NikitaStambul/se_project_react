@@ -7,8 +7,6 @@ function WeatherCard({ weatherData }) {
     weatherCardsImages[timeOfDay][weatherData.condition] ||
     weatherCardsImages[timeOfDay].default;
 
-  console.log(weatherImage)
-
   return (
     <section className="weather-card">
       <p className="weather-card__temp">{weatherData.temp.F}&deg;F</p>

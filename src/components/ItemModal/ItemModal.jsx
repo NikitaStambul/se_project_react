@@ -1,11 +1,10 @@
-import { createPortal } from "react-dom";
 import "./ItemModal.css";
 import BaseModal from "../BaseModal/BaseModal";
 
 function ItemModal({ closeModal, item }) {
   const { name, link, weather } = item;
 
-  return createPortal(
+  return (
     <BaseModal closeModal={closeModal}>
       <div className="modal__container modal__container_preview">
         <img className="modal__image" src={link} alt={name} />
@@ -14,8 +13,7 @@ function ItemModal({ closeModal, item }) {
           <p className="modal__weather">Weather: {weather}</p>
         </div>
       </div>
-    </BaseModal>,
-    document.getElementById("modal-root")
+    </BaseModal>
   );
 }
 
