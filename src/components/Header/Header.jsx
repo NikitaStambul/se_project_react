@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Header.css";
 import logo from "assets/logo.svg";
 import avatar from "assets/avatar.svg";
-import ModalWithForm from "components/ModalWithForm/ModalWithForm";
+import ModalWithForm from "components/ModalWithForm";
 
 function Header({ city }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

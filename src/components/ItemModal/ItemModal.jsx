@@ -1,5 +1,5 @@
 import "./ItemModal.css";
-import BaseModal from "../BaseModal/BaseModal";
+import BaseModal from "components/BaseModal";
 
 function ItemModal({ closeModal, item }) {
   const { name, link, weather } = item;

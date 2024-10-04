@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Footer from "components/Footer/Footer";
-import Header from "components/Header/Header";
-import Main from "components/Main/Main";
+import Footer from "components/Footer";
+import Header from "components/Header";
+import Main from "components/Main";
 import "./App.css";
 import weatherApi from "#/utils/weatherApi";
 import { coordinates, defaultWeatherData } from "#/utils/constants";

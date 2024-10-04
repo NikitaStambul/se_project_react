@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Main.css";
-import WeatherCard from "components/WeatherCard/WeatherCard";
-import ItemCard from "components/ItemCard/ItemCard";
-import Skeleton from "components/Skeleton/Skeleton";
+import WeatherCard from "components/WeatherCard";
+import ItemCard from "components/ItemCard";
+import Skeleton from "components/Skeleton";
 import weatherApi from "utils/weatherApi";
 
 function Main({ weatherData }) {
