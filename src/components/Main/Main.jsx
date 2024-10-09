@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Main.css";
 import WeatherCard from "components/WeatherCard";
 import ItemCard from "components/ItemCard";
 import Skeleton from "components/Skeleton";
 import weatherApi from "utils/weatherApi";
+import CurrentTemperatureUnitContext from "context/CurrentTemperatureUnitContext";
 
 function Main({ weatherData }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const [isLoading, setIsLoading] = useState(false);
   const [clothingItems, setClothingItems] = useState([]);
   useEffect(() => {
@@ -26,7 +28,8 @@ function Main({ weatherData }) {
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is {weatherData.temp.F}&deg; F / You may want to wear:
+          Today is {weatherData.temp[currentTemperatureUnit]}&deg;{" "}
+          {currentTemperatureUnit} / You may want to wear:
         </p>
         {isLoading ? (
           <ul className="cards__list">

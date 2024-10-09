@@ -1,0 +1,21 @@
+.radio-svg-outer {
+  stroke: #0008;
+  transition: 0.4s;
+}
+
+.radio-svg-inner {
+  fill: #0000;
+  transition: 0.4s;
+}
+
+.modal__label:hover .radio-svg-outer {
+  stroke: #000f;
+}
+
+.modal__radio-input:checked ~ svg .radio-svg-outer {
+  stroke: #000f;
+}
+
+.modal__radio-input:checked ~ svg .radio-svg-inner {
+  fill: #000f;
+}

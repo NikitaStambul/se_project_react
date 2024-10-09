@@ -1,0 +1,85 @@
+
+.toggle-switch {
+  --radius: 14px;
+  --color-font: #000;
+  --color-font-dimmed: #7e7e7e;
+  --color-font-contrast: #fff;
+  --color-background: #fff;
+  --color-background-accent: #000;
+
+  position: relative;
+  display: block;
+  user-select: none;
+  cursor: pointer;
+  width: calc(var(--radius) * 4);
+  height: calc(var(--radius) * 2);
+  border-radius: var(--radius);
+  background-color: #fff;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius);
+  border: calc(var(--radius) / 7) solid var(--color-font-dimmed);
+  transition: 0.4s;
+}
+
+.toggle-switch:hover::before {
+  border: calc(var(--radius) / 7) solid var(--color-background-accent);
+}
+
+.toggle-switch__labels-dark,
+.toggle-switch__labels-light {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  transition: 0.4s;
+}
+
+.toggle-switch__letter {
+  font-family: "Cabinet Grotesk", sans-serif;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-switch__labels-dark {
+  color: var(--color-font-dimmed);
+}
+
+.toggle-switch:hover .toggle-switch__labels-dark {
+  color: var(--color-font);
+}
+
+.toggle-switch__labels-light {
+  background-color: var(--color-background-accent);
+  color: var(--color-font-contrast);
+  clip-path: inset(0 50% 0 0 round var(--radius));
+  transition: 0.4s;
+}
+
+.toggle-switch:hover .toggle-switch__labels-light {
+  clip-path: inset(0 46% 0 0 round var(--radius));
+}
+
+.toggle-switch input:checked ~ .toggle-switch__labels-light {
+  clip-path: inset(0 0 0 50% round var(--radius));
+}
+
+.toggle-switch:hover input:checked ~ .toggle-switch__labels-light {
+  clip-path: inset(0 0 0 46% round var(--radius));
+}
