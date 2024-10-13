@@ -2,7 +2,7 @@
   min-height: calc(100vh - var(--height-header) - var(--height-footer));
 }
 
-.cards__list {
+.card__list {
   list-style-type: none;
   margin: 0;
   padding: 0;

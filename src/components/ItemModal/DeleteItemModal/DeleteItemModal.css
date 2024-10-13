@@ -1,0 +1,36 @@
+.delete-modal {
+  max-width: 670px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-modal__caption {
+  margin: 0 0 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.delete-modal__confirmation-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0 24px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #ff4d00;
+}
+
+.delete-modal__cancel-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}

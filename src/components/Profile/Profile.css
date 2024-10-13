@@ -1,0 +1,13 @@
+.profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 309px));
+  gap: 20px;
+}
+
+.profile__sidebar {
+  grid-column: 1;
+}
+
+.profile__clothes {
+  grid-column: 2 / -1;
+}

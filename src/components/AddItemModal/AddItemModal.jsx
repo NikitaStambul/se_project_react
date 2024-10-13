@@ -1,10 +1,21 @@
-import ModalWithForm from "components/ModalWithForm";
+import { useContext } from "react";
 import "./AddItemModal.css";
-import RadioButton from "./RadioButton/RadioButton";
+import api from "utils/api";
+import ModalWithForm from "components/ModalWithForm";
+import RadioButton from "./RadioButton";
+import ClothesContext from "context/ClothesContext";
 
 function AddItemModal({ onClose }) {
+  const { setClothings } = useContext(ClothesContext);
+
   const handleAddingNewItem = (data) => {
-    console.log(data);
+    api
+      .addClothing(data)
+      .then((clothing) => {
+        setClothings((clothings) => [...clothings, clothing]);
+        onClose();
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -15,7 +26,7 @@ function AddItemModal({ onClose }) {
       onSubmit={handleAddingNewItem}
     >
       <label className="modal__label" htmlFor="name">
-        Name:{" "}
+        Name
         <input
           className="modal__input"
           type="text"
@@ -25,13 +36,13 @@ function AddItemModal({ onClose }) {
           required
         />
       </label>
-      <label className="modal__label" htmlFor="link">
-        Image:{" "}
+      <label className="modal__label" htmlFor="imageUrl">
+        Image
         <input
           className="modal__input"
           type="url"
-          name="link"
-          id="link"
+          name="imageUrl"
+          id="imageUrl"
           placeholder="Image URL"
           required
         />
@@ -39,15 +50,15 @@ function AddItemModal({ onClose }) {
       <fieldset className="modal__radio-btns">
         <legend className="modal__legend">Select the weather type:</legend>
         <label className="modal__label modal__label_type_radio" htmlFor="hot">
-          <RadioButton name="type" id="hot" value="hot" required />
+          <RadioButton name="weather" id="hot" value="hot" required />
           Hot
         </label>
         <label className="modal__label modal__label_type_radio" htmlFor="warm">
-          <RadioButton name="type" id="warm" value="warm" />
+          <RadioButton name="weather" id="warm" value="warm" />
           Warm
         </label>
         <label className="modal__label modal__label_type_radio" htmlFor="cold">
-          <RadioButton name="type" id="cold" value="cold" />
+          <RadioButton name="weather" id="cold" value="cold" />
           Cold
         </label>
       </fieldset>

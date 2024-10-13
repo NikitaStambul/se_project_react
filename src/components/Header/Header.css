@@ -29,8 +29,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+  color: #000;
 }
 
 .header__username {
   margin: 0;
+}
+
+.header__avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid #0008;
+  background-color: #0003;
+  border-radius: 50%;
 }

@@ -1,27 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import "./Main.css";
 import WeatherCard from "components/WeatherCard";
 import ItemCard from "components/ItemCard";
 import Skeleton from "components/Skeleton";
-import weatherApi from "utils/weatherApi";
 import CurrentTemperatureUnitContext from "context/CurrentTemperatureUnitContext";
+import ClothesContext from "context/ClothesContext";
 
 function Main({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const [isLoading, setIsLoading] = useState(false);
-  const [clothingItems, setClothingItems] = useState([]);
-  useEffect(() => {
-    setIsLoading(true);
-
-    // mock api request instead taking clothing from constant directly
-    weatherApi
-      .getClothing()
-      .then(setClothingItems)
-      .catch(console.error)
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  const { isLoading, clothings } = useContext(ClothesContext);
 
   return (
     <main className="content">
@@ -32,7 +19,7 @@ function Main({ weatherData }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
         {isLoading ? (
-          <ul className="cards__list">
+          <ul className="card__list">
             {Array(4)
               .fill(0)
               .map((_, index) => (
@@ -42,9 +29,9 @@ function Main({ weatherData }) {
               ))}
           </ul>
         ) : (
-          <ul className="cards__list">
-            {clothingItems
-              .filter(({ weather }) => weather === weatherData.type)
+          <ul className="card__list">
+            {clothings
+              .filter(({ weather }) => weather === weatherData.weather)
               .map((item) => (
                 <ItemCard key={item._id} item={item} />
               ))}

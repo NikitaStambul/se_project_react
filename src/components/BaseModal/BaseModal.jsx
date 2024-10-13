@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import cn from "classnames";
 import "./BaseModal.css";
 
-function BaseModal({ closeModal, children, className }) {
+function BaseModal({ onClose, children, className }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function BaseModal({ closeModal, children, className }) {
 
   const handleClose = () => {
     setIsVisible(false);
-    setTimeout(closeModal, 300);
+    setTimeout(onClose, 300);
   };
 
   const handleOverlayClick = (e) => {

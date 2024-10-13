@@ -1,19 +1,52 @@
+import { useContext, useState } from "react";
 import "./ItemModal.css";
+import DeleteItemModal from "./DeleteItemModal";
 import BaseModal from "components/BaseModal";
+import ClothesContext from "context/ClothesContext";
 
 function ItemModal({ closeModal, item }) {
-  const { name, link, weather } = item;
+  const { setClothings } = useContext(ClothesContext);
+  const [deleteModalIsOpened, setDeleteModalIsOpened] = useState(false);
+  const { _id, name, imageUrl, weather } = item;
+
+  const handleDeleteClick = () => {
+    setDeleteModalIsOpened(true);
+  };
+
+  const handleDeleteModalClose = () => {
+    setDeleteModalIsOpened(false);
+  };
+
+  const handleItemDelete = () => {
+    setClothings((clothings) =>
+      clothings.filter((clothing) => clothing._id !== _id)
+    );
+  };
 
   return (
-    <BaseModal closeModal={closeModal}>
-      <div className="modal__container modal__container_preview">
-        <img className="modal__image" src={link} alt={name} />
-        <div className="modal__footer">
-          <h2 className="modal__caption">{name}</h2>
-          <p className="modal__weather">Weather: {weather}</p>
+    <>
+      <BaseModal onClose={closeModal}>
+        <div className="modal__container modal__container_preview">
+          <img className="modal__image" src={imageUrl} alt={name} />
+          <div className="modal__footer">
+            <div className="modal__heading">
+              <h2 className="modal__caption">{name}</h2>
+              <button className="modal__delete-btn" onClick={handleDeleteClick}>
+                Delete Item
+              </button>
+            </div>
+            <p className="modal__weather">Weather: {weather}</p>
+          </div>
         </div>
-      </div>
-    </BaseModal>
+      </BaseModal>
+      {deleteModalIsOpened && (
+        <DeleteItemModal
+          onClose={handleDeleteModalClose}
+          onDelete={handleItemDelete}
+          id={item._id}
+        />
+      )}
+    </>
   );
 }
 

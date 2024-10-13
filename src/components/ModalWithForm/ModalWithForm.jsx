@@ -28,7 +28,7 @@ function ModalWithForm({
   };
 
   return (
-    <BaseModal closeModal={onClose} className="modal__container_padded">
+    <BaseModal onClose={onClose} className="modal__container_padded">
       <h2 className="modal__title">{title}</h2>
       <form
         className="modal__form"

@@ -1,0 +1,37 @@
+.clothes {
+  display: flex;
+  flex-direction: column;
+}
+
+.clothes__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 56px;
+}
+
+.clothes__caption {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.clothes__add-btn {
+  font-family: "Cabinet Grotesk" sans-serif;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  color: #0009;
+  padding: 0;
+}
+
+.clothes__card-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 309px));
+  gap: 20px;
+}
