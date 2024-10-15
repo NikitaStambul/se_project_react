@@ -6,12 +6,14 @@ class WeatherApi {
       return WeatherApi.shared;
     }
 
+    this._APIkey = import.meta.env.VITE_WEATHER_API_KEY;
     this._baseUrl = "https://api.openweathermap.org";
     WeatherApi.shared = this;
   }
 
-  getWeather({ lat, lon }, APIkey) {
-    const url = this._generateUrl({ lat, lon }, APIkey);
+  getWeather({ lat, lon }) {
+    const url = this._generateUrl({ lat, lon });
+
     return fetch(url)
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -48,8 +50,8 @@ class WeatherApi {
     return sunrise * 1000 < now && now < sunset * 1000;
   }
 
-  _generateUrl({ lat, lon }, APIkey) {
-    return `${this._baseUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${APIkey}`;
+  _generateUrl({ lat, lon }) {
+    return `${this._baseUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${this._APIkey}`;
   }
 }
 

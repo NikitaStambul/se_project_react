@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     weatherApi
-      .getWeather(coordinates, import.meta.env.VITE_WEATHER_API_KEY)
+      .getWeather(coordinates)
       .then(setWeatherData)
       .catch(console.error);
   }, []);
