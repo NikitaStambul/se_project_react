@@ -1,6 +1,6 @@
 import "./DeleteItemModal.css";
 import api from "utils/api";
-import BaseModal from "components/BaseModal";
+import BaseModal from "components/BaseModal/BaseModal";
 
 function DeleteItemModal({ onClose, onDelete, id }) {
   const handleDeleteClick = () => {

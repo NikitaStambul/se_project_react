@@ -1,7 +1,7 @@
 import cn from "classnames";
 import "./AddClothesBtn.css";
 import { useState } from "react";
-import AddItemModal from "components/AddItemModal";
+import AddItemModal from "components/AddItemModal/AddItemModal";
 
 function AddClothesBtn({ className, children }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

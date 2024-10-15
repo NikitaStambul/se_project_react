@@ -1,6 +1,6 @@
 import "./Profile.css";
-import ClothesSection from "components/ClothesSection";
-import Sidebar from "components/Sidebar";
+import ClothesSection from "components/ClothesSection/ClothesSection";
+import Sidebar from "components/Sidebar/Sidebar";
 
 function Profile() {
   return (

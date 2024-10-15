@@ -1,10 +1,10 @@
 import cn from "classnames";
 import "./ClothesSection.css";
 import { useContext } from "react";
-import ClothesContext from "context/ClothesContext";
-import Skeleton from "components/Skeleton";
-import ItemCard from "components/ItemCard";
-import AddClothesBtn from "components/AddClothesBtn";
+import ClothesContext from "contexts/ClothesContext";
+import Skeleton from "components/Skeleton/Skeleton";
+import ItemCard from "components/ItemCard/ItemCard";
+import AddClothesBtn from "components/AddClothesBtn/AddClothesBtn";
 
 function ClothesSection({ className }) {
   const { clothings, isLoading } = useContext(ClothesContext);

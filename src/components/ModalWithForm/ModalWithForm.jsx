@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./ModalWithForm.css";
-import BaseModal from "components/BaseModal";
+import BaseModal from "components/BaseModal/BaseModal";
 
 function ModalWithForm({
   onClose,

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import "./ItemModal.css";
-import DeleteItemModal from "./DeleteItemModal";
-import BaseModal from "components/BaseModal";
-import ClothesContext from "context/ClothesContext";
+import DeleteItemModal from "components/DeleteItemModal/DeleteItemModal";
+import BaseModal from "components/BaseModal/BaseModal";
+import ClothesContext from "contexts/ClothesContext";
 
 function ItemModal({ closeModal, item }) {
   const { setClothings } = useContext(ClothesContext);

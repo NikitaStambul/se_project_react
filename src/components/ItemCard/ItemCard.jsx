@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ItemModal from "components/ItemModal";
+import ItemModal from "components/ItemModal/ItemModal";
 import "./ItemCard.css";
 
 function ItemCard({ item }) {

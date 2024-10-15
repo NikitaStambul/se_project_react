@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import "./Main.css";
-import WeatherCard from "components/WeatherCard";
-import ItemCard from "components/ItemCard";
-import Skeleton from "components/Skeleton";
-import CurrentTemperatureUnitContext from "context/CurrentTemperatureUnitContext";
-import ClothesContext from "context/ClothesContext";
+import WeatherCard from "components/WeatherCard/WeatherCard";
+import ItemCard from "components/ItemCard/ItemCard";
+import Skeleton from "components/Skeleton/Skeleton";
+import CurrentTemperatureUnitContext from "contexts/CurrentTemperatureUnitContext";
+import ClothesContext from "contexts/ClothesContext";
 
 function Main({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);

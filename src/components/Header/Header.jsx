@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "assets/logo.svg";
-import AddClothesBtn from "components/AddClothesBtn";
-import ToggleSwitch from "components/ToggleSwitch";
-import UserContext from "context/UserContext";
+import AddClothesBtn from "components/AddClothesBtn/AddClothesBtn";
+import ToggleSwitch from "components/ToggleSwitch/ToggleSwitch";
+import UserContext from "contexts/UserContext";
 
 function Header({ city }) {
   const { username, avatar } = useContext(UserContext);

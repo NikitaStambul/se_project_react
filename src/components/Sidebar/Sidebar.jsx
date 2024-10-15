@@ -1,7 +1,7 @@
 import cn from "classnames";
 import "./Sidebar.css";
 import { useContext } from "react";
-import UserContext from "context/UserContext";
+import UserContext from "contexts/UserContext";
 
 function Sidebar({ className }) {
   const { username, avatar } = useContext(UserContext);

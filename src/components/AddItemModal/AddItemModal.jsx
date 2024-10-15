@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import "./AddItemModal.css";
 import api from "utils/api";
-import ModalWithForm from "components/ModalWithForm";
-import RadioButton from "./RadioButton";
-import ClothesContext from "context/ClothesContext";
+import ModalWithForm from "components/ModalWithForm/ModalWithForm";
+import RadioButton from "components/RadioButton/RadioButton";
+import ClothesContext from "contexts/ClothesContext";
 
 function AddItemModal({ onClose }) {
   const { setClothings } = useContext(ClothesContext);
