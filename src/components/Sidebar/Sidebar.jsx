@@ -1,4 +1,4 @@
-import cn from "classnames";
+import classNames from "classnames";
 import "./Sidebar.css";
 import { useContext } from "react";
 import UserContext from "contexts/UserContext";
@@ -7,7 +7,7 @@ function Sidebar({ className }) {
   const { username, avatar } = useContext(UserContext);
 
   return (
-    <section className={cn("sidebar", { [className]: className })}>
+    <section className={classNames("sidebar", { [className]: className })}>
       <div className="sidebar__user">
         {avatar ? (
           <img className="sidebar__avatar" src={avatar} alt={username} />

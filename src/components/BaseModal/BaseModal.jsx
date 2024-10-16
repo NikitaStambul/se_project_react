@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import cn from "classnames";
+import classNames from "classnames";
 import "./BaseModal.css";
 
 function BaseModal({ onClose, children, className }) {
@@ -35,10 +35,12 @@ function BaseModal({ onClose, children, className }) {
 
   return createPortal(
     <div
-      className={cn("modal", { modal__active: isVisible })}
+      className={classNames("modal", { modal__active: isVisible })}
       onClick={handleOverlayClick}
     >
-      <div className={cn("modal__container", { [className]: className })}>
+      <div
+        className={classNames("modal__container", { [className]: className })}
+      >
         {children}
         <button
           className="modal__close"

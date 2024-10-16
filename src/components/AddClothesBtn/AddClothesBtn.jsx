@@ -1,4 +1,4 @@
-import cn from "classnames";
+import classNames from "classnames";
 import "./AddClothesBtn.css";
 import { useState } from "react";
 import AddItemModal from "components/AddItemModal/AddItemModal";
@@ -17,7 +17,7 @@ function AddClothesBtn({ className, children }) {
   return (
     <>
       <button
-        className={cn("add-clothes-btn", { [className]: className })}
+        className={classNames("add-clothes-btn", { [className]: className })}
         onClick={handleAddBtnClick}
       >
         {children}

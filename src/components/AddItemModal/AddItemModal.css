@@ -2,6 +2,7 @@
   font-weight: 700;
   color: #0008;
   cursor: pointer;
+  transition: 0.4s;
 }
 
 .modal__label:hover {
@@ -12,10 +13,6 @@
   color: #000;
 }
 
-.modal__title {
-  margin: 0 0 24px;
-}
-
 .modal__input {
   margin-top: 8px;
   height: 24px;
@@ -23,6 +20,23 @@
   font-weight: 700;
   border: none;
   border-bottom: 1px solid #000;
+}
+
+.modal__label_error {
+  color: #ff4d00;
+}
+
+.modal__input_error {
+  border-color: #ff4d00;
+  color: #ff4d00;
+}
+
+.modal__label:hover.modal__label_error {
+  color: #ff4d00;
+}
+
+.modal__title {
+  margin: 0 0 24px;
 }
 
 .modal__radio-btns {

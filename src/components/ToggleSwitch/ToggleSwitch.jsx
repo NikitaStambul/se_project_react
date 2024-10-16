@@ -1,4 +1,4 @@
-import cn from "classnames";
+import classNames from "classnames";
 import "./ToggleSwitch.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "contexts/CurrentTemperatureUnitContext";
@@ -13,7 +13,7 @@ function ToggleSwitch({ className }) {
   };
 
   return (
-    <label className={cn("toggle-switch", { [className]: className })}>
+    <label className={classNames("toggle-switch", { [className]: className })}>
       <input
         type="checkbox"
         checked={currentTemperatureUnit == "C"}

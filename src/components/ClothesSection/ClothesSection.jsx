@@ -1,4 +1,4 @@
-import cn from "classnames";
+import classNames from "classnames";
 import "./ClothesSection.css";
 import { useContext } from "react";
 import ClothesContext from "contexts/ClothesContext";
@@ -10,7 +10,7 @@ function ClothesSection({ className }) {
   const { clothings, isLoading } = useContext(ClothesContext);
 
   return (
-    <section className={cn("clothes", { [className]: className })}>
+    <section className={classNames("clothes", { [className]: className })}>
       <div className="clothes__header">
         <p className="clothes__caption">Your Items</p>
         <AddClothesBtn className="clothes__add-btn">+ Add new</AddClothesBtn>
