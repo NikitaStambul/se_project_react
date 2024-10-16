@@ -39,9 +39,11 @@ function AddItemModal({ onClose }) {
 
   const handleBlur = (e) => validateField(e.target);
 
-  const handleSubmit = (data) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     api
-      .addClothing(data)
+      .addClothing(formData)
       .then((clothing) => {
         setClothings((clothings) => [...clothings, clothing]);
         onClose();

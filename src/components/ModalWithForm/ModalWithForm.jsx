@@ -18,22 +18,13 @@ function ModalWithForm({
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const formObject = Object.fromEntries(formData.entries());
-
-    onSubmit(formObject);
-  };
-
   return (
     <BaseModal onClose={onClose} className="modal__container_padded">
       <h2 className="modal__title">{title}</h2>
       <form
         className="modal__form"
         ref={formRef}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
         onChange={handleChange}
         onInput={handleChange}
       >
