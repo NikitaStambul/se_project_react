@@ -14,24 +14,20 @@ class WeatherApi {
   getWeather({ lat, lon }) {
     const url = this._generateUrl({ lat, lon });
 
-    return fetch(url)
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-      )
-      .then((data) => {
-        const filteredData = {
-          city: data.name,
-          condition: data.weather[0].main.toLowerCase(),
-          weather: this._getWeatherType(data.main.temp),
-          temp: {
-            F: Math.round(data.main.temp),
-            C: Math.round(((data.main.temp - 32) * 5) / 9),
-          },
-          isDay: this._isDay(data.sys, Date.now()),
-        };
+    return this._request(url).then((data) => {
+      const filteredData = {
+        city: data.name,
+        condition: data.weather[0].main.toLowerCase(),
+        weather: this._getWeatherType(data.main.temp),
+        temp: {
+          F: Math.round(data.main.temp),
+          C: Math.round(((data.main.temp - 32) * 5) / 9),
+        },
+        isDay: this._isDay(data.sys, Date.now()),
+      };
 
-        return filteredData;
-      });
+      return filteredData;
+    });
   }
 
   getClothing() {
@@ -52,6 +48,14 @@ class WeatherApi {
 
   _generateUrl({ lat, lon }) {
     return `${this._baseUrl}/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${this._APIkey}`;
+  }
+
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
   }
 }
 

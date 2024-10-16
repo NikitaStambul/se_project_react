@@ -9,29 +9,33 @@ class Api {
   }
 
   getClothing() {
-    return fetch(`${this._baseUrl}/items`).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    return this._request(`${this._baseUrl}/items`).then((items) =>
+      items.reverse()
     );
   }
 
   addClothing(data) {
-    return fetch(`${this._baseUrl}/items`, {
+    return this._request(`${this._baseUrl}/items`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    });
   }
 
   removeClothing(id) {
-    return fetch(`${this._baseUrl}/items/${id}`, {
+    return this._request(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
-    }).then((res) =>
-      res.ok ? "success" : Promise.reject(`Error: ${res.status}`)
-    );
+    });
+  }
+
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
   }
 }
 

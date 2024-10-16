@@ -45,7 +45,7 @@ function AddItemModal({ onClose }) {
     api
       .addClothing(formData)
       .then((clothing) => {
-        setClothings((clothings) => [...clothings, clothing]);
+        setClothings((clothings) => [clothing, ...clothings]);
         onClose();
       })
       .catch((err) => console.error(err));
