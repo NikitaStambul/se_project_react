@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import "./AddClothesBtn.css";
+import "./EditProfileBtn.css";
 import { useState } from "react";
-import AddItemModal from "components/AddItemModal/AddItemModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-function AddClothesBtn({ className, children }) {
+function EditProfileBtn({ className, children }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const handleAddBtnClick = () => {
@@ -17,14 +17,14 @@ function AddClothesBtn({ className, children }) {
   return (
     <>
       <button
-        className={classNames("add-clothes-btn", { [className]: className })}
+        className={classNames("edith-profile-btn", { [className]: className })}
         onClick={handleAddBtnClick}
       >
         {children}
       </button>
-      {isModalOpened && <AddItemModal onClose={handleModalClose} />}
+      {isModalOpened && <EditProfileModal onClose={handleModalClose} />}
     </>
   );
 }
 
-export default AddClothesBtn;
+export default EditProfileBtn;

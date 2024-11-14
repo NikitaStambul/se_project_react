@@ -1,10 +1,10 @@
 import "./DeleteItemModal.css";
-import api from "utils/api";
+import itemsApi from "utils/itemsApi";
 import BaseModal from "components/BaseModal/BaseModal";
 
 function DeleteItemModal({ onClose, onDelete, id }) {
   const handleDeleteClick = () => {
-    api
+    itemsApi
       .removeClothing(id)
       .then(onDelete)
       .catch((err) => console.error(err));

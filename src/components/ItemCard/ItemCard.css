@@ -8,10 +8,15 @@
   aspect-ratio: 1;
 }
 
-.card__name {
+.card__heading {
   position: absolute;
-  padding: 2px 12px;
   top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.card__name {
+  padding: 2px 12px;
   margin: 0;
   font-weight: 700;
   font-size: 16px;

@@ -1,5 +1,9 @@
 # What to wear
 
+**Back end**
+
+[LINK](https://github.com/NikitaStambul/se_project_express)
+
 **To set up the project locally:**
 
 1. Run `npm i` to install dependencies.

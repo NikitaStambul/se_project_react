@@ -1,0 +1,11 @@
+.modal__login-option-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  color: #0008;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}

@@ -1,48 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./AddItemModal.css";
-import api from "utils/api";
+import itemsApi from "utils/itemsApi";
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
 import RadioButton from "components/RadioButton/RadioButton";
 import ClothesContext from "contexts/ClothesContext";
 import classNames from "classnames";
+import useFormValidation from "#/hooks/useFormValidation";
 
 function AddItemModal({ onClose }) {
   const { setClothings } = useContext(ClothesContext);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    imageUrl: "",
-    weather: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    imageUrl: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const validateField = (field) => {
-    if (!field.validity.valid) {
-      setErrors((prev) => ({
-        ...prev,
-        [field.name]: field.validationMessage,
-      }));
-    } else {
-      setErrors((prev) => ({ ...prev, [field.name]: "" }));
-    }
-  };
-
-  const handleBlur = (e) => validateField(e.target);
+  const { formData, errors, handleInputChange, handleBlur } = useFormValidation(
+    { name: "", imageUrl: "", weather: "" }
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    api
+    itemsApi
       .addClothing(formData)
       .then((clothing) => {
         setClothings((clothings) => [clothing, ...clothings]);

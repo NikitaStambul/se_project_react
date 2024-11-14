@@ -7,3 +7,8 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.modal__form-buttons {
+  display: flex;
+  gap: 2px;
+}

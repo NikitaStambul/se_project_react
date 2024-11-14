@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
 import CurrentTemperatureUnitContext from "./CurrentTemperatureUnitContext";
-import UserContext from "./UserContext";
 import ClothesContext from "./ClothesContext";
-import api from "utils/api";
+import itemsApi from "utils/itemsApi";
+import CurrentUserContext from "./CurrentUserContext";
+import authApi from "#/utils/authApi";
 
 function Providers({ children }) {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const user = {
-    username: "Terrence Tegegne",
-    avatar: new URL("assets/avatar.svg", import.meta.url).href,
-  };
+  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUserIsLoading, setCurrentUserIsLoading] = useState(true);
   const [clothingsIsLoading, setClothingsIsLoading] = useState(false);
   const [clothings, setClothings] = useState([]);
 
   useEffect(() => {
     setClothingsIsLoading(true);
 
-    api
+    authApi
+      .getMyInfo()
+      .then((user) => setCurrentUser(user))
+      .catch((err) => console.error(err.message))
+      .finally(() => {
+        setCurrentUserIsLoading(false);
+      });
+
+    itemsApi
       .getClothing()
       .then((items) => {
         setClothings(items);
@@ -28,17 +35,19 @@ function Providers({ children }) {
   }, []);
 
   return (
-    <CurrentTemperatureUnitContext.Provider
-      value={{ currentTemperatureUnit, setCurrentTemperatureUnit }}
+    <CurrentUserContext.Provider
+      value={{ currentUser, setCurrentUser, currentUserIsLoading }}
     >
-      <UserContext.Provider value={user}>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, setCurrentTemperatureUnit }}
+      >
         <ClothesContext.Provider
           value={{ clothings, setClothings, isLoading: clothingsIsLoading }}
         >
           {children}
         </ClothesContext.Provider>
-      </UserContext.Provider>
-    </CurrentTemperatureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 

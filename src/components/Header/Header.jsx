@@ -4,10 +4,12 @@ import "./Header.css";
 import logo from "assets/logo.svg";
 import AddClothesBtn from "components/AddClothesBtn/AddClothesBtn";
 import ToggleSwitch from "components/ToggleSwitch/ToggleSwitch";
-import UserContext from "contexts/UserContext";
+import SignUpBtn from "../SignUpBtn/SignUpBtn";
+import LogInBtn from "../LogInBtn/LogInBtn";
+import CurrentUserContext from "#/contexts/CurrentUserContext";
 
 function Header({ city }) {
-  const { username, avatar } = useContext(UserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -22,15 +24,32 @@ function Header({ city }) {
         {currentDate}, {city}
       </p>
       <ToggleSwitch className="header__toggle" />
-      <AddClothesBtn className="header__add-btn">+ Add clothes</AddClothesBtn>
-      <Link to="/profile" className="header__user">
-        <p className="header__username">{username}</p>
-        {avatar ? (
-          <img className="header__avatar" src={avatar} alt={username} />
-        ) : (
-          <div className="header__avatar-placeholder">{username[0]}</div>
-        )}
-      </Link>
+      {currentUser ? (
+        <>
+          <AddClothesBtn className="header__add-btn">
+            + Add clothes
+          </AddClothesBtn>
+          <Link to="/profile" className="header__user">
+            <p className="header__username">{currentUser.name}</p>
+            {currentUser.avatar ? (
+              <img
+                className="header__avatar"
+                src={currentUser.avatar}
+                alt={currentUser.name}
+              />
+            ) : (
+              <div className="header__avatar-placeholder">
+                {currentUser.name[0]}
+              </div>
+            )}
+          </Link>
+        </>
+      ) : (
+        <>
+          <SignUpBtn>Sign Up</SignUpBtn>
+          <LogInBtn>Log In</LogInBtn>
+        </>
+      )}
     </header>
   );
 }

@@ -8,6 +8,7 @@ function ModalWithForm({
   children,
   title = "Form",
   submitBtnText = "Submit",
+  altBtnEl,
 }) {
   const [isFormValid, setIsFormValid] = useState(false);
   const formRef = useRef(null);
@@ -29,13 +30,16 @@ function ModalWithForm({
         onInput={handleChange}
       >
         {children}
-        <button
-          className="modal__submit-btn"
-          type="submit"
-          disabled={!isFormValid}
-        >
-          {submitBtnText}
-        </button>
+        <div className="modal__form-buttons">
+          <button
+            className="modal__submit-btn"
+            type="submit"
+            disabled={!isFormValid}
+          >
+            {submitBtnText}
+          </button>
+          {altBtnEl}
+        </div>
       </form>
     </BaseModal>
   );

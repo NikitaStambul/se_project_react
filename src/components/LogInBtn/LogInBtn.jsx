@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import "./AddClothesBtn.css";
+import LogInModal from "../LogInModal/LogInModal";
+import "./LogInBtn.css";
 import { useState } from "react";
-import AddItemModal from "components/AddItemModal/AddItemModal";
 
-function AddClothesBtn({ className, children }) {
+function LogInBtn({ className, children }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const handleAddBtnClick = () => {
@@ -17,14 +17,14 @@ function AddClothesBtn({ className, children }) {
   return (
     <>
       <button
-        className={classNames("add-clothes-btn", { [className]: className })}
+        className={classNames("login-btn", { [className]: className })}
         onClick={handleAddBtnClick}
       >
         {children}
       </button>
-      {isModalOpened && <AddItemModal onClose={handleModalClose} />}
+      {isModalOpened && <LogInModal onClose={handleModalClose} />}
     </>
   );
 }
 
-export default AddClothesBtn;
+export default LogInBtn;

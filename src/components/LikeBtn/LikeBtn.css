@@ -1,0 +1,25 @@
+.like-btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.like-btn__icon {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 2;
+  opacity: 0.6;
+  transition: all 0.4s;
+}
+
+.like-btn__icon:hover {
+  fill: black;
+}
+
+.like-btn__icon.like_active {
+  fill: black;
+  opacity: 1;
+}

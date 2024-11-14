@@ -33,6 +33,13 @@
   color: #000;
 }
 
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .header__username {
   margin: 0;
 }

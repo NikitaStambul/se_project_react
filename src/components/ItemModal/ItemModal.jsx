@@ -3,9 +3,12 @@ import "./ItemModal.css";
 import DeleteItemModal from "components/DeleteItemModal/DeleteItemModal";
 import BaseModal from "components/BaseModal/BaseModal";
 import ClothesContext from "contexts/ClothesContext";
+import CurrentUserContext from "#/contexts/CurrentUserContext";
 
 function ItemModal({ closeModal, item }) {
   const { setClothings } = useContext(ClothesContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const isOwn = item.owner._id === currentUser?._id;
   const [deleteModalIsOpened, setDeleteModalIsOpened] = useState(false);
   const { _id, name, imageUrl, weather } = item;
 
@@ -31,9 +34,14 @@ function ItemModal({ closeModal, item }) {
           <div className="modal__footer">
             <div className="modal__heading">
               <h2 className="modal__caption">{name}</h2>
-              <button className="modal__delete-btn" onClick={handleDeleteClick}>
-                Delete Item
-              </button>
+              {isOwn && (
+                <button
+                  className="modal__delete-btn"
+                  onClick={handleDeleteClick}
+                >
+                  Delete Item
+                </button>
+              )}
             </div>
             <p className="modal__weather">Weather: {weather}</p>
           </div>
