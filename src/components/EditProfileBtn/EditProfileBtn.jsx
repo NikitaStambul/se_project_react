@@ -1,28 +1,20 @@
 import classNames from "classnames";
 import "./EditProfileBtn.css";
-import { useState } from "react";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { useModal } from "#/hooks/useModal";
 
 function EditProfileBtn({ className, children }) {
-  const [isModalOpened, setIsModalOpened] = useState(false);
-
-  const handleAddBtnClick = () => {
-    setIsModalOpened(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpened(false);
-  };
+  const { isModalOpened, openModal, closeModal } = useModal();
 
   return (
     <>
       <button
         className={classNames("edith-profile-btn", { [className]: className })}
-        onClick={handleAddBtnClick}
+        onClick={openModal}
       >
         {children}
       </button>
-      {isModalOpened && <EditProfileModal onClose={handleModalClose} />}
+      {isModalOpened && <EditProfileModal onClose={closeModal} />}
     </>
   );
 }

@@ -4,9 +4,8 @@ import "./Header.css";
 import logo from "assets/logo.svg";
 import AddClothesBtn from "components/AddClothesBtn/AddClothesBtn";
 import ToggleSwitch from "components/ToggleSwitch/ToggleSwitch";
-import SignUpBtn from "../SignUpBtn/SignUpBtn";
-import LogInBtn from "../LogInBtn/LogInBtn";
 import CurrentUserContext from "#/contexts/CurrentUserContext";
+import AuthBtns from "../AuthBtns/AuthBtns";
 
 function Header({ city }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -46,8 +45,7 @@ function Header({ city }) {
         </>
       ) : (
         <>
-          <SignUpBtn>Sign Up</SignUpBtn>
-          <LogInBtn>Log In</LogInBtn>
+          <AuthBtns />
         </>
       )}
     </header>

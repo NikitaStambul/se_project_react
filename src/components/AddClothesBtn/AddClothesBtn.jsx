@@ -1,28 +1,21 @@
 import classNames from "classnames";
 import "./AddClothesBtn.css";
-import { useState } from "react";
+
 import AddItemModal from "components/AddItemModal/AddItemModal";
+import { useModal } from "#/hooks/useModal";
 
 function AddClothesBtn({ className, children }) {
-  const [isModalOpened, setIsModalOpened] = useState(false);
-
-  const handleAddBtnClick = () => {
-    setIsModalOpened(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpened(false);
-  };
+  const { isModalOpened, openModal, closeModal } = useModal();
 
   return (
     <>
       <button
         className={classNames("add-clothes-btn", { [className]: className })}
-        onClick={handleAddBtnClick}
+        onClick={openModal}
       >
         {children}
       </button>
-      {isModalOpened && <AddItemModal onClose={handleModalClose} />}
+      {isModalOpened && <AddItemModal onClose={closeModal} />}
     </>
   );
 }

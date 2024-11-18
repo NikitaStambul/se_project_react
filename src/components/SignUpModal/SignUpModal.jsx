@@ -1,10 +1,10 @@
-import "./RegisterModal.css";
+import "./SignUpModal.css";
 import classNames from "classnames";
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
 import authApi from "#/utils/authApi";
 import useFormValidation from "#/hooks/useFormValidation";
 
-function RegisterModal({ onClose }) {
+function SignUpModal({ onClose, onLogInClick }) {
   const { formData, errors, handleInputChange, handleBlur } = useFormValidation(
     {
       name: "",
@@ -22,7 +22,7 @@ function RegisterModal({ onClose }) {
       .then(() => {
         onClose();
       })
-      .catch((err) => console.error(err));
+      .catch(console.error);
   };
 
   return (
@@ -31,7 +31,15 @@ function RegisterModal({ onClose }) {
       submitBtnText="Sign Up"
       onClose={onClose}
       onSubmit={handleSubmit}
-      altBtnEl={<button className="modal__login-option-btn">or Log In</button>}
+      altBtnEl={
+        <button
+          onClick={onLogInClick}
+          className="modal__login-option-btn"
+          type="button"
+        >
+          or Log In
+        </button>
+      }
     >
       <label
         className={classNames("modal__label", {
@@ -123,4 +131,4 @@ function RegisterModal({ onClose }) {
   );
 }
 
-export default RegisterModal;
+export default SignUpModal;

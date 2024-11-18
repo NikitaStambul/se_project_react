@@ -19,6 +19,7 @@ function AddItemModal({ onClose }) {
     itemsApi
       .addClothing(formData)
       .then((clothing) => {
+        console.log(clothing)
         setClothings((clothings) => [clothing, ...clothings]);
         onClose();
       })

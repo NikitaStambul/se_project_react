@@ -6,7 +6,7 @@ import { useContext } from "react";
 import CurrentUserContext from "#/contexts/CurrentUserContext";
 import useFormValidation from "#/hooks/useFormValidation";
 
-function LogInModal({ onClose }) {
+function LogInModal({ onClose, onSignUpClick }) {
   const { setCurrentUser } = useContext(CurrentUserContext);
   const { formData, errors, handleInputChange, handleBlur } = useFormValidation(
     { email: "", password: "" }
@@ -28,10 +28,19 @@ function LogInModal({ onClose }) {
 
   return (
     <ModalWithForm
-      title="Sign Up"
-      submitBtnText="Sign Up"
+      title="Log In"
+      submitBtnText="Log In"
       onClose={onClose}
       onSubmit={handleSubmit}
+      altBtnEl={
+        <button
+          onClick={onSignUpClick}
+          className="modal__login-option-btn"
+          type="button"
+        >
+          or Sign Up
+        </button>
+      }
     >
       <label
         className={classNames("modal__label", {

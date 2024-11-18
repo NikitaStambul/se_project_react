@@ -3,12 +3,12 @@ import "./ItemModal.css";
 import DeleteItemModal from "components/DeleteItemModal/DeleteItemModal";
 import BaseModal from "components/BaseModal/BaseModal";
 import ClothesContext from "contexts/ClothesContext";
-import CurrentUserContext from "#/contexts/CurrentUserContext";
+import CurrentUserContext from "contexts/CurrentUserContext";
 
-function ItemModal({ closeModal, item }) {
+function ItemModal({ onClose, item }) {
   const { setClothings } = useContext(ClothesContext);
   const { currentUser } = useContext(CurrentUserContext);
-  const isOwn = item.owner._id === currentUser?._id;
+  const isOwn = item.owner === currentUser?._id;
   const [deleteModalIsOpened, setDeleteModalIsOpened] = useState(false);
   const { _id, name, imageUrl, weather } = item;
 
@@ -28,7 +28,7 @@ function ItemModal({ closeModal, item }) {
 
   return (
     <>
-      <BaseModal onClose={closeModal}>
+      <BaseModal onClose={onClose}>
         <div className="modal__container modal__container_preview">
           <img className="modal__image" src={imageUrl} alt={name} />
           <div className="modal__footer">
