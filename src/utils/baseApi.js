@@ -1,6 +1,8 @@
+import { BACKEND_BASE_URL } from "./config";
+
 class BaseApi {
   constructor() {
-    this._baseUrl = import.meta.env.VITE_BACKEND_URL;
+    this._baseUrl = BACKEND_BASE_URL;
   }
 
   _checkResponse(res) {
