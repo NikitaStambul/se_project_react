@@ -1,4 +1,5 @@
 .profile {
+  min-height: calc(100vh - var(--height-header) - var(--height-footer));
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
