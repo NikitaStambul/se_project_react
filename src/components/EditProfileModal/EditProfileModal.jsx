@@ -28,8 +28,8 @@ function EditProfileModal({ onClose }) {
 
   return (
     <ModalWithForm
-      title="Sign Up"
-      submitBtnText="Sign Up"
+      title="Edit Profile"
+      submitBtnText="Submit"
       onClose={onClose}
       onSubmit={handleSubmit}
     >
